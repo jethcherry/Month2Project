@@ -1,0 +1,128 @@
+####
+
+POST http://localhost:5500/auth
+Content-Type: application/json
+
+{
+  "Name": "paul",
+  "Email": "paul.ndege@gmail.com",
+  "Password": "Jeth300^@w",
+   "isAdmin": true
+
+  
+}
+
+
+###
+POST http://localhost:5500/auth/login
+Content-Type: application/json
+
+{
+  "Email": "paul.ndege@gmail.com",
+  "Password": "Jeth300^@w"
+}
+
+
+###
+GET http://localhost:5500/auth
+Content-Type: application/json
+
+
+
+###
+PUT http://localhost:5500/auth/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTdWIiOiI3MDNiZDMzNS00MDg1LTRlZmQtODRkYS0zMWZkOTMwNGM4YmEiLCJOYW1lIjoicGF1bCIsImlzQWRtaW4iOjEsImlhdCI6MTcxODYzMTY5NiwiZXhwIjoxNzE4NjM4ODk2fQ.e-efDK5VkY8z98poHWxuob5DPkdDLQNn6OS9OZE-Zn8
+
+{
+  "Name": "Bernice",
+  "Email": "bernice.email@example.com",
+  "Password": "JJFJFJ4664***kkfkf",
+  "isAdmin": 1,
+  "isDeleted": 0,
+  "isEmailSent": 1
+}
+
+
+###
+DELETE http://localhost:5500/auth/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTdWIiOiI3MDNiZDMzNS00MDg1LTRlZmQtODRkYS0zMWZkOTMwNGM4YmEiLCJOYW1lIjoicGF1bCIsImlzQWRtaW4iOjEsImlhdCI6MTcxODYzMTY5NiwiZXhwIjoxNzE4NjM4ODk2fQ.e-efDK5VkY8z98poHWxuob5DPkdDLQNn6OS9OZE-Zn8
+
+
+# Tours
+
+
+####
+
+POST http://localhost:5500/tour/create
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTdWIiOiI3MDNiZDMzNS00MDg1LTRlZmQtODRkYS0zMWZkOTMwNGM4YmEiLCJOYW1lIjoicGF1bCIsImlzQWRtaW4iOjEsImlhdCI6MTcxODYzMTY5NiwiZXhwIjoxNzE4NjM4ODk2fQ.e-efDK5VkY8z98poHWxuob5DPkdDLQNn6OS9OZE-Zn8
+Content-Type: application/json
+
+
+{
+    "TourId": "1",
+    "Name": "Visitin Himalayas",
+    "Description": "Climbing the Himalayas Mountains",
+    "Price": 100.00,
+    "Duration": 120,
+    "Location": "Tour Location"
+}
+
+####
+
+GET http://localhost:5500/tour/all
+Content-Type: application/json
+
+
+####
+PUT http://localhost:5500/tour/update?id=1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTdWIiOiI3MDNiZDMzNS00MDg1LTRlZmQtODRkYS0zMWZkOTMwNGM4YmEiLCJOYW1lIjoicGF1bCIsImlzQWRtaW4iOjEsImlhdCI6MTcxODYzMTY5NiwiZXhwIjoxNzE4NjM4ODk2fQ.e-efDK5VkY8z98poHWxuob5DPkdDLQNn6OS9OZE-Zn8
+
+
+{
+    "Name": "Updated Tour Name",
+    "Description": "Updated Tour Description",
+    "Price": 120.00,
+    "Duration": 150,
+    "Location": "Updated Tour Location"
+}
+
+
+DELETE http://localhost:5500/tour/delete?id=1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTdWIiOiI3MDNiZDMzNS00MDg1LTRlZmQtODRkYS0zMWZkOTMwNGM4YmEiLCJOYW1lIjoicGF1bCIsImlzQWRtaW4iOjEsImlhdCI6MTcxODYzMTY5NiwiZXhwIjoxNzE4NjM4ODk2fQ.e-efDK5VkY8z98poHWxuob5DPkdDLQNn6OS9OZE-Zn8
+
+
+
+
+
+####
+POST    http://localhost:5500/hotel/hotels
+Content-Type: application/json
+
+{
+  "hotelId": "2",
+  "HotelName": "The Bomas",
+  "HotelDescription": "Located in Nairobi.",
+  "HotelLocation": "Sample Location",
+  "HotelRating": 4.5,
+  "Price": 150
+}
+
+####
+PUT http://localhost:5500/hotel/hotels/2
+Content-Type: application/json
+
+{
+  "hotelId": "1",
+  "HotelName": "The Bomas",
+  "HotelDescription": "Located in Nairobi.",
+  "HotelLocation": "Sample Location",
+  "HotelRating": 4.5,
+  "Price": 150
+}
+
+####
+DELETE http://localhost:5500/hotel/hotels/1
+Authorization: Bearer 

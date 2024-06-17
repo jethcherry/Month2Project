@@ -1,0 +1,5 @@
+CREATE OR ALTER PROCEDURE getBookings
+AS
+BEGIN
+    SELECT * FROM BookingsTable;
+END;

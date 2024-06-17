@@ -1,0 +1,12 @@
+ USE TourBooking
+
+CREATE TABLE BookingsTable (
+    BookingId VARCHAR(255) PRIMARY KEY,
+    BookingDate DATETIME NOT NULL,
+    TotalAmount DECIMAL(10, 2) NOT NULL,
+    IsCancelled BIT DEFAULT 0, 
+    TourId VARCHAR(255) FOREIGN KEY REFERENCES ToursTable(TourId),
+    HotelId VARCHAR(255)  FOREIGN KEY REFERENCES HotelsTable,
+    UserId VARCHAR(255) FOREIGN KEY REFERENCES BookingUsers ON DELETE CASCADE NOT NULL
+);
+
