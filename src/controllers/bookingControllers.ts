@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { DbHelper } from '../Databasehelpers';
 import { Booking } from '../models/boookingModels'; 
+import { BooleanSchema } from 'joi';
+import bookingShema from '../helpers/bookings';
 
 const dbHelper = new DbHelper();
 
@@ -60,6 +62,12 @@ export const updateBooking = async (req: Request, res: Response): Promise<Respon
     try {
         const { bookingId } = req.params;
         const { BookingDate, TotalAmount, IsCancelled, TourId, HotelId, UserId } = req.body;
+
+        const {error} = bookingShema.validate(req.body)
+        if(error)
+            {
+                return res.status(400).json(error)
+            }
 
         await dbHelper.exec('UpdateBooking', {
             BookingId: bookingId,

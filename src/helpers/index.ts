@@ -12,3 +12,5 @@ export const RegisterShema = Joi.object({
     }),
     isAdmin: Joi.boolean().optional()  
 });
+
+

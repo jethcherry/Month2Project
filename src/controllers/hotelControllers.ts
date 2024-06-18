@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { DbHelper } from '../Databasehelpers';
 import { Hotel } from '../models/hotelModels'; 
+import { hotelShema } from '../helpers/hotel';
 
 const dbHelper = new DbHelper();
 
@@ -56,6 +57,12 @@ export const updateHotel = async (req: Request, res: Response): Promise<Response
     try {
         const { hotelId } = req.params;
         const { HotelName, HotelDescription, HotelLocation, HotelRating, Price } = req.body;
+
+        const {error} = hotelShema.validate(req.body)
+        if(error)
+            {
+                return res.status(400).json(error)
+            }
 
         await dbHelper.exec('UpdateHotel', {
             hotelId,

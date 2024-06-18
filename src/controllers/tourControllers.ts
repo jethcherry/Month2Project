@@ -2,6 +2,7 @@
 import { Request, Response } from 'express';
 import { DbHelper } from '../Databasehelpers';
 import { Tour } from '../models/tourModel';
+import tourShema from '../helpers/tours';
 
 const dbInstance = new DbHelper();
 
@@ -48,6 +49,12 @@ export const updateTour = async (req: Request, res: Response): Promise<Response>
     try {
         const { id } = req.params;
         const { Name, Description, Price, Duration, Location } = req.body;
+        const error = tourShema.validate(req.body)
+
+        if(error)
+            {
+                return res.status(400).json(error);
+            }
 
         await dbInstance.exec('updateTour', {
             TourId: id,
