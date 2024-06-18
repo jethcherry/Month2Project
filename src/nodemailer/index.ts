@@ -55,11 +55,33 @@ ejs.renderFile(path.join(__dirname, '../../Templates/register.ejs'), { name: "Je
     cc: '',
     bcc: [],
     subject: "Testing Email",
-    html: data // Use the rendered HTML content
+    html: data 
 };
 
   
     sendEmail(messageOption)
 })
+
+
+
+ejs.renderFile(path.join(__dirname, '../Templates/booking.ejs'), (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    
+    let messageOption = {
+    to: process.env.EMAIL,
+    from: process.env.EMAIL,
+    cc: '',
+    bcc: [],
+    subject: "",
+    html: data 
+};
+
+  
+    sendEmail(messageOption)
+})
+
 
 

@@ -22,7 +22,7 @@ export interface User {
 export async function run() {
     try {
         let pool = await mssql.connect(sqlConfig);
-        let users = await (await pool.request().query("SELECT * FROM Users WHERE isEmailSent = 0")).recordset as User[];
+        let users = await (await pool.request().query("SELECT * FROM BookingUsers WHERE isEmailSent = 0")).recordset as User[];
 
         users.forEach(user => {
             ejs.renderFile(path.join(__dirname, '../../Templates/register.ejs'), { name: user.Name }, async (error, data) => {
