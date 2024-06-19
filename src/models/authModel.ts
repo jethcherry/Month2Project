@@ -13,7 +13,7 @@ export interface User
 
 export interface Payload
 {
-   Id:string;
+
    Sub:string;
    Name:string;
    isAdmin:number
