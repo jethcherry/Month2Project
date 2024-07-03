@@ -1,11 +1,11 @@
 ####
 
-POST http://localhost:5500/auth
+GET http://localhost:5500/auth
 Content-Type: application/json
 
 {
-  "Name": "paul",
-  "Email": "paul.ndege@gmail.com",
+  "Name": "Jethro",
+  "Email": "jethrosumbeiywet @gmail.com",
   "Password": "Jeth300^@w",
    "isAdmin": true
 

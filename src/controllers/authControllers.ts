@@ -12,19 +12,19 @@ const dbInstance = new DbHelper();
 
 export const registerUser = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const id = uid();
-        const { Name, Email, Password, isAdmin,isDeleted,isEmailSent} = req.body;
+        // const id = uid();
+        // const { Name, Email, Password, isAdmin,isDeleted,isEmailSent} = req.body;
 
-        const { error } = RegisterShema.validate(req.body, { abortEarly: false }); 
-        if (error) {
-            const errorMessage = error.details.map(d => d.message).join(', ');
-            return res.status(400).json({ message: errorMessage });
-        }
+        // const { error } = RegisterShema.validate(req.body, { abortEarly: false }); 
+        // if (error) {
+        //     const errorMessage = error.details.map(d => d.message).join(', ');
+        //     return res.status(400).json({ message: errorMessage });
+        // }
 
-        const hashedPassword = await Bcrypt.hash(Password, 10);
+        // const hashedPassword = await Bcrypt.hash(Password, 10);
 
     
-        await dbInstance.exec('addUser', { Id: id, Name, Email, Password: hashedPassword, isAdmin,isDeleted,isEmailSent });
+        // await dbInstance.exec('addUser', { Id: id, Name, Email, Password: hashedPassword, isAdmin,isDeleted,isEmailSent });
 
         return res.status(201).json({ message: 'User was added successfully!' });
     } catch (error) {
@@ -49,11 +49,11 @@ export const loginUser = async (req: Request, res: Response): Promise<Response> 
                     isAdmin: user[0].isAdmin 
                 };
                 const token = jwt.sign(payload, process.env.SECRET as string, { expiresIn: '2h' });
-                return res.status(200).json({ message: 'Login Successful', token });
+                return res.status(200).json({isSuccess:true, message: 'Login Success', token });
             }
         }
 
-        return res.status(400).json({ message: 'Invalid Credentials' });
+        return res.status(400).json({isSuccess:false, message: 'Invalid Credentials' });
     } catch (error) {
         return res.status(500).json({ message: 'Server error', error });
     }
